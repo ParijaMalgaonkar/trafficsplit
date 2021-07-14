@@ -37,8 +37,7 @@ export default function App()
       // setData(0);
       return (
         <div className="App">
-          <h1>{data.count}</h1>
-          <h1>Hello New</h1>
+          <NewHtml />
         </div>
       );
     }
