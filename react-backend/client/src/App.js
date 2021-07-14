@@ -28,8 +28,7 @@ export default function App()
       // setData(1);
       return (
         <div className="App">
-          <h1>{data.count}</h1>
-          <h1>Hi Old</h1>
+          <OldHtml />
         </div>
       );
     }
