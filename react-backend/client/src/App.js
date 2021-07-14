@@ -22,10 +22,10 @@ export default function App()
       getData()
     },[])
 
-    console.log("this is data count");
-    console.log(data);
+    console.log("this is data count", data);
     if(data==0)
     {
+      setData(1);
       return (
         <div className="App">
           <h1>{data.count}</h1>
@@ -35,6 +35,7 @@ export default function App()
     }
     else 
     {
+      setData(0);
       return (
         <div className="App">
           <h1>{data.count}</h1>
