@@ -1,1 +1,5 @@
-{}
+{
+  "dependencies": {
+    "macaddress": "^0.5.2"
+  }
+}
