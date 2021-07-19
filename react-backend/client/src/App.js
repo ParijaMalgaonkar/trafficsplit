@@ -22,10 +22,10 @@ export default function App()
       getData()
     },[])
 
-    macaddress.one(function (err, mac) {
+    macaddress.one().then(function (mac) {
       console.log("Mac address for this host: %s", mac);  
     });
-
+    
     console.log("this is data count", data);
     if(data==0)
     {
