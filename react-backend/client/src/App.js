@@ -22,7 +22,7 @@ export default function App()
       getData()
     },[])
 
-    macaddress.all(function (err, all) {
+    macaddress.all().then(function (all) {
       console.log(JSON.stringify(all, null, 2));
     });
 
