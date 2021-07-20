@@ -3,8 +3,19 @@ import {useState,useEffect} from 'react';
 import OldHtml from './OldHtml/OldHtml';
 import NewHtml from './NewHtml/NewHtml';
 import macaddress from 'macaddress';
+import './App.css';
 export default function App() 
   {
+    const [details, setDetails] = useState(null);
+
+    const getUserDetails = () => {
+      fetch("https://geolocation-db.com/json/fb363670-e22a-11eb-a464-59f706281067")
+      .then(response => response.json())
+      .then(deets => setDetails(deets));
+    }
+
+
+
     const [data,setData]=useState(0);
     const getData=()=>{
     fetch('/users')
@@ -22,9 +33,9 @@ export default function App()
       getData()
     },[])
 
-    macaddress.all().then(function (all) {
-      console.log(JSON.stringify(all, null, 2));
-    });
+    // macaddress.all().then(function (all) {
+    //   console.log(JSON.stringify(all, null, 2));
+    // });
 
     console.log("this is data count", data);
     if(data==0)
@@ -33,6 +44,15 @@ export default function App()
       return (
         <div className="App">
           <OldHtml />
+          <button onClick={getUserDetails}>Details</button>
+          {
+            details && (
+            <div>
+              <h1>{details.IPv4}</h1>
+              <br />
+              <h1>{details.country_name}</h1>
+            </div>
+          )}
         </div>
       );
     }
@@ -42,6 +62,14 @@ export default function App()
       return (
         <div className="App">
           <NewHtml />
+          <button onClick={getUserDetails}>Details</button>
+          {
+            details && (
+            <div>
+              <h1>{details.IPv4}</h1>
+              <h1>{details.country_name}</h1>
+            </div>
+          )}
         </div>
       );
     }
