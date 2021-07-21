@@ -1,5 +1,6 @@
 import React from 'react'
 import {useState,useEffect} from 'react';
+import {useCookies} from 'react-cookie';
 import OldHtml from './OldHtml/OldHtml';
 import NewHtml from './NewHtml/NewHtml';
 import macaddress from 'macaddress';
