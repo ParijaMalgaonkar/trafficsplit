@@ -52,12 +52,8 @@ export default function App()
       // setData(1);
 
       return (
-        <div className="App" onLoad={setCookieFunction(0)}>
-          {message && (
-      <div>
-         <OldHtml onLoad={setCookieFunction(0)}/>
-      </div>
-      )}
+        <div className="App">
+          <OldHtml />
           <button onClick={setCookieFunction(0)}>Details</button>
           {
             details && (
@@ -67,6 +63,11 @@ export default function App()
               <h1>{details.country_name}</h1>
             </div>
           )}
+          {message && (
+          <div>
+            <OldHtml/>
+          </div>
+          )}
         </div>
       );
     }
@@ -75,20 +76,21 @@ export default function App()
       // setData(0);
       setCookieFunction(1);
       return (
-        <div className="App" >
-          { message && (
-            <div>
-              <OldHtml />
-            </div>
-          )
-          }
-          <button onClick={setCookieFunction(1)}>Details</button>
+        <div className="App">
+          <NewHtml />
+          <button onClick={setCookieFunction(0)}>Details</button>
           {
             details && (
             <div>
               <h1>{details.IPv4}</h1>
+              <br />
               <h1>{details.country_name}</h1>
             </div>
+          )}
+          {message && (
+          <div>
+            <NewHtml/>
+          </div>
           )}
         </div>
       );
