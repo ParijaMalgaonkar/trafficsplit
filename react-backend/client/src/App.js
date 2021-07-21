@@ -33,9 +33,7 @@ export default function App()
       getData()
     },[])
 
-    // macaddress.all().then(function (all) {
-    //   console.log(JSON.stringify(all, null, 2));
-    // });
+
 
     console.log("this is data count", data);
     if(data==0)
