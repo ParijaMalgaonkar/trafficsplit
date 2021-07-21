@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "macaddress": "^0.5.2"
+    "macaddress": "^0.5.2",
+    "react-cookie": "^4.0.3"
   }
 }
