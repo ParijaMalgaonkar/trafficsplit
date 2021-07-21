@@ -18,8 +18,8 @@ export default function App()
     const [message, setMessage] = useState('')
     
     const setCookieFunction = (value) => {
-      localStorage.setItem('username', value)
-      setMessage('Username set as cookie!!')
+      localStorage.setItem('counter', value)
+      setMessage(value)
     }
 
 
@@ -48,6 +48,7 @@ export default function App()
     if(message == 0 || message == '')
     {
       // setData(1);
+      setCookieFunction(0);
       return (
         <div className="App" >
           <OldHtml />
