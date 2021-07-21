@@ -15,13 +15,12 @@ export default function App()
       .then(deets => setDetails(deets));
     }
 
-    const [cookies, setCookie] = useCookies(["counter"]);
-    function handleCookie() {
-      setCookie("counter", "1", {
-        path: "/"
-      });
+    const [message, setMessage] = useState('')
+    
+    const setCookieFunction = (value) => {
+      localStorage.setItem('username', value)
+      setMessage('Username set as cookie!!')
     }
-
 
 
 
@@ -46,11 +45,11 @@ export default function App()
  
 
     console.log("this is data count", data);
-    if(counter == 0 || counter == '')
+    if(message == 0 || message == '')
     {
       // setData(1);
       return (
-        <div className="App" onLoad={(e) => setCounter(0)}>
+        <div className="App" >
           <OldHtml />
           <button onClick={getUserDetails}>Details</button>
           {
@@ -68,7 +67,7 @@ export default function App()
     {
       // setData(0);
       return (
-        <div className="App" onLoad={(e) => setCounter(1)}>
+        <div className="App">
           <NewHtml />
           <button onClick={getUserDetails}>Details</button>
           {
@@ -78,7 +77,6 @@ export default function App()
               <h1>{details.country_name}</h1>
             </div>
           )}
-          <button onClick={handle}>Set Cookie</button>
         </div>
       );
     }
