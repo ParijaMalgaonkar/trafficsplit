@@ -15,15 +15,12 @@ export default function App()
       .then(deets => setDetails(deets));
     }
 
-
-    const [counter, setCounter] = useState('');
-    const getCookies = () => {
-      const [cookies, setCookie] = useCookies(['user']);
+    const [cookies, setCookie] = useCookies(["counter"]);
+    function handleCookie() {
+      setCookie("counter", "1", {
+        path: "/"
+      });
     }
-    const handle = () => {
-      setCookie('Counter', counter, { path: '/' });
-    };
-    getCookies();
 
 
 
@@ -64,7 +61,6 @@ export default function App()
               <h1>{details.country_name}</h1>
             </div>
           )}
-          <button onClick={handle}>Set Cookie</button>
         </div>
       );
     }
