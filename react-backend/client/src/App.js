@@ -8,6 +8,7 @@ import './App.css';
 export default function App() 
   {
     const [details, setDetails] = useState(null);
+ 
 
     const getUserDetails = () => {
       fetch("https://geolocation-db.com/json/fb363670-e22a-11eb-a464-59f706281067")
@@ -15,6 +16,7 @@ export default function App()
       .then(deets => setDetails(deets));
     }
 
+    
     const [message, setMessage] = useState('')
     
     const setCookieFunction = (value) => {
@@ -48,11 +50,15 @@ export default function App()
     if(message == 0 || message == '')
     {
       // setData(1);
-      setCookieFunction(0);
+
       return (
-        <div className="App" >
-          <OldHtml />
-          <button onClick={getUserDetails}>Details</button>
+        <div className="App" onLoad={setCookieFunction(0)}>
+          {message && (
+      <div>
+         <OldHtml onLoad={setCookieFunction(0)}/>
+      </div>
+      )}
+          <button onClick={setCookieFunction(0)}>Details</button>
           {
             details && (
             <div>
@@ -67,10 +73,16 @@ export default function App()
     else 
     {
       // setData(0);
+      setCookieFunction(1);
       return (
-        <div className="App">
-          <NewHtml />
-          <button onClick={getUserDetails}>Details</button>
+        <div className="App" >
+          { message && (
+            <div>
+              <OldHtml />
+            </div>
+          )
+          }
+          <button onClick={setCookieFunction(1)}>Details</button>
           {
             details && (
             <div>
