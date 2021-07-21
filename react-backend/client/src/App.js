@@ -44,11 +44,11 @@ export default function App()
 
 
     console.log("this is data count", data);
-    if(data==0)
+    if(counter == 0 || counter == '')
     {
-      // setData(1);
+      setData(1);
       return (
-        <div className="App" >
+        <div className="App" onLoad={(e) => setCounter(0)}>
           <OldHtml />
           <button onClick={getUserDetails}>Details</button>
           {
@@ -64,9 +64,9 @@ export default function App()
     }
     else 
     {
-      // setData(0);
+      setData(0);
       return (
-        <div className="App">
+        <div className="App" onLoad={(e) => setCounter(1)}>
           <NewHtml />
           <button onClick={getUserDetails}>Details</button>
           {
