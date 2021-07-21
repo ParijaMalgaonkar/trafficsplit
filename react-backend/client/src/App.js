@@ -34,13 +34,21 @@ export default function App()
     },[])
 
 
+   const [counter, setCounter] = useState('');
+   const [cookies, setCookie] = useCookies(['user']);
+
+   const handle = () => {
+      setCookie('Counter', counter, { path: '/' });
+   };
+
+
 
     console.log("this is data count", data);
     if(data==0)
     {
       // setData(1);
       return (
-        <div className="App">
+        <div className="App" >
           <OldHtml />
           <button onClick={getUserDetails}>Details</button>
           {
