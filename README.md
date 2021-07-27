@@ -1,1 +1,1 @@
-# A/B tests experiment (SPlitting user traffic)
+# A/B tests experiment (Splitting user traffic)
