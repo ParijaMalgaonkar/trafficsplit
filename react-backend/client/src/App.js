@@ -1,23 +1,17 @@
 import React from 'react'
-import {useState,useEffect} from 'react';
-import {useCookies} from 'react-cookie';
+// import {useState,useEffect} from 'react';
 import OldHtml from './OldHtml/OldHtml';
 import NewHtml from './NewHtml/NewHtml';
-import macaddress from 'macaddress';
-import { Experiment, Variant, emitter } from '@marvelapp/react-ab-test';
+// import macaddress from 'macaddress';
+import { Experiment, Variant, emitter, experimentDebugger } from '@marvelapp/react-ab-test';
 import './App.css';
-export default function App() 
+
+experimentDebugger.enable();
+emitter.defineVariants('splitUserTraffic', ['OldHtml', 'NewHtml'], [50, 50]);
+
+ function App() 
   {
-    const [details, setDetails] = useState(null);
- 
 
-    const getUserDetails = () => {
-      fetch("https://geolocation-db.com/json/fb363670-e22a-11eb-a464-59f706281067")
-      .then(response => response.json())
-      .then(deets => setDetails(deets));
-    }
-
-    
     // const [message, setMessage] = useState('')
     
     // const setCookieFunction = (value) => {
@@ -25,65 +19,57 @@ export default function App()
     //   setMessage(value)
     // }
 
-
-
-    const [data,setData]=useState(0);
-    const getData=()=>{
-    fetch('/users')
-      .then(function(response){
-        console.log(response)
-        return response.json();
-      })
-      .then(function(myJson) {
-        console.log(myJson);
-        setData(myJson)
-      });
+    // const [data,setData]=useState(0);
+    // const getData=()=>{
+    // fetch('/users')
+    //   .then(function(response){
+    //     console.log(response)
+    //     return response.json();
+    //   })
+    //   .then(function(myJson) {
+    //     console.log(myJson);
+    //     setData(myJson)
+    //   });
       
-    }
-    console.log(data);
-    useEffect(()=>{
-      getData()
-    },[])
+    // }
+    // console.log(data);
+    // useEffect(()=>{
+    //   getData()
+    // },[])
     
  
 
-    console.log("this is data count", data);
-    if(data == 0 || data == '')
-    {
-      // setData(1);
+    // console.log("this is data count", data);
+    // if(data == 0 || data == '')
+    // setData(1);
+  
 
+    const Winner = (e) => {
+      emitter.emitWin ('splitUserTraffic');
+    }
+    
       return (
-        <div className="App">
-          <OldHtml />
-          <button onClick={getUserDetails}>Details</button>
-          {
-            details && (
-            <div>
-              <h1>{details.IPv4}</h1>
-              <br />
-              <h1>{details.country_name}</h1>
-            </div>
-          )}
+        <div>
+          <Experiment name='splitUserTraffic'>
+            <Variant name='OldHtml'>
+              <div className="App">
+                <OldHtml onLoad={Winner}/>
+              </div>
+            </Variant>
+
+            <Variant name='NewHtml'>
+              <div className="App">
+                <NewHtml onLoad={Winner}/>
+              </div>
+            </Variant>
+          </Experiment>
         </div>
       );
-    }
-    else 
-    {
-      // setData(0);
+  }
 
-      return (
-        <div className="App">
-          <NewHtml />
-          <button onClick={getUserDetails}>Details</button>
-          {
-            details && (
-            <div>
-              <h1>{details.IPv4}</h1>
-              <br />
-              <h1>{details.country_name}</h1>
-            </div>
-          )}
-        </div>
-      );
-    }
-}
+  export default App;
+
+  emitter.addPlayListener(function(experimentName, variantName) {
+    console.log(`Displaying experiment ${experimentName} variant ${variantName}`);
+  });
+

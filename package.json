@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@optimizely/react-sdk": "^2.6.2",
     "macaddress": "^0.5.2",
     "react-cookie": "^4.0.3",
     "universal-cookie": "^4.0.4"
