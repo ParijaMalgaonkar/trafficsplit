@@ -6,5 +6,5 @@ Getting started :-
 - Open the terminal in the library (<b>cd trafficsplit</b>)
 - Open the backend folder named 'react-backend' (<b>cd react-backend</b>)
 - Type the command : <b>PORT=3001 npm start</b> 
-  If you use yard, type the command : <b>PORT=3001 yarn start</b>
+  If you use yarn, type the command : <b>PORT=3001 yarn start</b>
 - 
