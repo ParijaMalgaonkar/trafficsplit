@@ -7,7 +7,7 @@ import macaddress from 'macaddress';
 import './App.css';
 export default function App() 
   {
-    const [details, setDetails] = useState(null);
+    // const [details, setDetails] = useState(null);
  
 
     const getUserDetails = () => {
@@ -17,12 +17,12 @@ export default function App()
     }
 
     
-    const [message, setMessage] = useState('')
+    // const [message, setMessage] = useState('')
     
-    const setCookieFunction = (value) => {
-      localStorage.setItem('counter', value)
-      setMessage(value)
-    }
+    // const setCookieFunction = (value) => {
+    //   localStorage.setItem('counter', value)
+    //   setMessage(value)
+    // }
 
 
 
@@ -47,14 +47,14 @@ export default function App()
  
 
     console.log("this is data count", data);
-    if(message == 0 || message == '')
+    if(data == 0 || data == '')
     {
       // setData(1);
 
       return (
         <div className="App">
           <OldHtml />
-          <button onClick={setCookieFunction(0)}>Details</button>
+          <button onClick={getUserDetails}>Details</button>
           {
             details && (
             <div>
@@ -62,11 +62,6 @@ export default function App()
               <br />
               <h1>{details.country_name}</h1>
             </div>
-          )}
-          {message && (
-          <div>
-            <OldHtml/>
-          </div>
           )}
         </div>
       );
@@ -78,7 +73,7 @@ export default function App()
       return (
         <div className="App">
           <NewHtml />
-          <button onClick={setCookieFunction(0)}>Details</button>
+          <button onClick={getUserDetails}>Details</button>
           {
             details && (
             <div>
@@ -86,11 +81,6 @@ export default function App()
               <br />
               <h1>{details.country_name}</h1>
             </div>
-          )}
-          {message && (
-          <div>
-            <NewHtml/>
-          </div>
           )}
         </div>
       );
