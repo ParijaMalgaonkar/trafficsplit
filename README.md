@@ -2,4 +2,4 @@
 
 Getting started : 
 - Clone the library into your system
-- 
+- Open the terminal in the library
