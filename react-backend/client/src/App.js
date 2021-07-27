@@ -66,7 +66,6 @@ emitter.defineVariants('splitUserTraffic', ['OldHtml', 'NewHtml'], [50, 50]);
         </div>
       );
   }
-
   export default App;
 
   emitter.addPlayListener(function(experimentName, variantName) {
