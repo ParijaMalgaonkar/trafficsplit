@@ -15,3 +15,39 @@
                   .then(response => response.json())
                   .then(deets => setDetails(deets));
                 }
+
+
+
+
+
+
+                const [message, setMessage] = useState('')
+    
+                const setCookieFunction = (value) => {
+                  localStorage.setItem('counter', value)
+                  setMessage(value)
+                }
+            
+                const [data,setData]=useState(0);
+                const getData=()=>{
+                fetch('/users')
+                  .then(function(response){
+                    console.log(response)
+                    return response.json();
+                  })
+                  .then(function(myJson) {
+                    console.log(myJson);
+                    setData(myJson)
+                  });
+                  
+                }
+                console.log(data);
+                useEffect(()=>{
+                  getData()
+                },[])
+                
+             
+            
+                console.log("this is data count", data);
+                if(data == 0 || data == '')
+                setData(1);
