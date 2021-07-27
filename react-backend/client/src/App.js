@@ -4,10 +4,11 @@ import {useCookies} from 'react-cookie';
 import OldHtml from './OldHtml/OldHtml';
 import NewHtml from './NewHtml/NewHtml';
 import macaddress from 'macaddress';
+import { Experiment, Variant, emitter } from '@marvelapp/react-ab-test';
 import './App.css';
 export default function App() 
   {
-    // const [details, setDetails] = useState(null);
+    const [details, setDetails] = useState(null);
  
 
     const getUserDetails = () => {
@@ -69,7 +70,7 @@ export default function App()
     else 
     {
       // setData(0);
-      setCookieFunction(1);
+
       return (
         <div className="App">
           <NewHtml />
